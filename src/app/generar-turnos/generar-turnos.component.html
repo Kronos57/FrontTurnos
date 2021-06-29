@@ -1,0 +1,33 @@
+
+<div class="center">
+  <h1>Generar Turnos</h1>
+</div>
+
+<div> 
+  <div>
+    <label for="fechaInicio">Fecha Inicio: </label>
+    <input type="date" id="fechaInicio" name="fechaInicio" #fechaInicio>
+  </div>
+  <br />
+  
+  <div>
+    <label for="fechaFin">Fecha Fin: </label>
+    <input type="date" id="fechaFin" name="fechaFin" #fechaFin>
+  </div>
+
+  <p>
+    <label for="service">Servicio: </label>
+    <select id="service" name="service" #service>
+      <option [value]="item" *ngFor="let item of listaServicios">{{item}}</option>
+    </select>
+  </p>
+  
+  <p>
+    <button type="button" (click)="generarTurnos(fechaInicio.value, fechaFin.value, service.value)">Generar Turnos
+    </button>
+  </p>
+</div>
+
+<div>
+  <app-table-turnos [titulos]="titulosColumnas" [filas]="post" *ngIf="post!=null"></app-table-turnos>
+</div>
